@@ -40,7 +40,14 @@ interface UserDetailInterface
     /**
      * Баланс
      *
-     * @return string
+     * @return float
      */
     public function getBalance();
+
+    /**
+     * Валюта
+     *
+     * @return float
+     */
+    public function getCurrency();
 }

@@ -49,6 +49,13 @@ class WidgetCreate
     private $cancelUrl;
 
     /**
+     * Язык виджета (ru-RU, en-EN)
+     *
+     * @var string|null
+     */
+    private $lang;
+
+    /**
      * @param $amount
      * @param $clientReferenceId
      */
@@ -99,6 +106,14 @@ class WidgetCreate
     }
 
     /**
+     * @return string|null
+     */
+    public function getLang()
+    {
+        return $this->lang;
+    }
+
+    /**
      * @param string|null $widgetDescription
      * @return WidgetCreate
      */
@@ -125,6 +140,16 @@ class WidgetCreate
     public function setCancelUrl($cancelUrl)
     {
         $this->cancelUrl = $cancelUrl;
+        return $this;
+    }
+
+    /**
+     * @param string|null $lang
+     * @return WidgetCreate
+     */
+    public function setLang($lang)
+    {
+        $this->lang = $lang;
         return $this;
     }
 }

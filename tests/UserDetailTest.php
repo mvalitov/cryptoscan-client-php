@@ -36,7 +36,8 @@ class UserDetailTest extends TestCase
               "data": {
                 "id": 2,
                 "status": "Active",
-                "balance": "85.00"
+                "balance": 85.00,
+                "currency": "USD"
               }
             }'),
         ]);
@@ -54,8 +55,9 @@ class UserDetailTest extends TestCase
         $response = (new CryptoScanClient($auth, $provider))->userDetail();
 
         $this->assertTrue($response->isSuccess());
-        $this->assertEquals('2', $response->getId());
+        $this->assertEquals(2, $response->getId());
         $this->assertEquals('Active', $response->getStatus());
-        $this->assertEquals('85.00', $response->getBalance());
+        $this->assertEquals(85.00, $response->getBalance());
+        $this->assertEquals('USD', $response->getCurrency());
     }
 }
