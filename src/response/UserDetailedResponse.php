@@ -23,9 +23,14 @@ class UserDetailedResponse extends BaseResponse implements UserDetailInterface
     protected $status;
 
     /**
-     * @var string
+     * @var float
      */
     protected $balance;
+
+    /**
+     * @var string
+     */
+    protected $currency;
 
     /**
      * @inheritDoc
@@ -49,5 +54,10 @@ class UserDetailedResponse extends BaseResponse implements UserDetailInterface
     public function getBalance()
     {
         return $this->balance;
+    }
+
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 }

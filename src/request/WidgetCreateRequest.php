@@ -56,6 +56,7 @@ class WidgetCreateRequest implements HttpRequestInterface
             "widget_description" => $command->getWidgetDescription(),
             "back_url" => $command->getBackUrl(),
             "cancel_url" => $command->getCancelUrl(),
+            "lang" => $command->getLang(),
         ];
     }
 }

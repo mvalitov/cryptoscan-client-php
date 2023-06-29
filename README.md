@@ -63,7 +63,8 @@ $result = $client->widgetCreate($command);
 $command
     ->setBackUrl('https://')
     ->setCancelUrl('https://')
-    ->setWidgetDescription('Description');
+    ->setWidgetDescription('Description')
+    ->setLang('ru-RU');
 $result = $client->widgetCreate($command);
 ```
 
