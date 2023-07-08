@@ -11,7 +11,7 @@ CryptoScan
 ------------
 Устанавливать рекомендуется через composer выполнив:
 
-    composer install cryptoscan-one/cryptoscan-client-php "~1.0.0"
+    composer require cryptoscan-one/cryptoscan-client-php "~1.0.0"
 
 Использование
 -----
@@ -66,7 +66,7 @@ $command
     ->setBackUrl('https://')
     ->setCancelUrl('https://')
     ->setWidgetDescription('Description')
-    ->setLang('ru-RU')
+    ->setLang('ru-RU');
     ->setCurrency("EUR");
 $result = $client->widgetCreate($command);
 ```
