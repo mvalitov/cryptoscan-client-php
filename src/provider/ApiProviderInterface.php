@@ -10,6 +10,8 @@ namespace cryptoscan\provider;
 
 use cryptoscan\command\InvoiceCreate;
 use cryptoscan\command\WidgetCreate;
+use cryptoscan\contract\CurrencyRateListInterface;
+use cryptoscan\contract\CurrencyRateStatusInterface;
 use cryptoscan\contract\InvoiceCreatedInterface;
 use cryptoscan\contract\InvoiceListInterface;
 use cryptoscan\contract\UserDetailInterface;
@@ -61,4 +63,19 @@ interface ApiProviderInterface extends ProviderInterface
      * @return UserDetailInterface
      */
     public function userDetail();
+
+    /**
+     * Поддерживаемые валюты
+     *
+     * @return CurrencyRateListInterface
+     */
+    public function currencyRate();
+
+    /**
+     * Поддерживаемые валюты
+     *
+     * @param string $currency
+     * @return CurrencyRateStatusInterface
+     */
+    public function currencyRateStatus($currency);
 }

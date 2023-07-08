@@ -93,6 +93,28 @@ class HttpClientProvider implements ApiProviderInterface
     }
 
     /**
+     * @inheritDoc
+     */
+    public function currencyRate()
+    {
+        $request = HttpMessageFactory::currencyRate();
+        $response = $this->safeRequest($request);
+
+        return HttpMessageFactory::currencyRateResult($response);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function currencyRateStatus($currency)
+    {
+        $request = HttpMessageFactory::currencyRateStatus($currency);
+        $response = $this->safeRequest($request);
+
+        return HttpMessageFactory::currencyRateStatusResult($response);
+    }
+
+    /**
      * @param HttpRequestInterface $request
      * @return ResponseInterface
      */

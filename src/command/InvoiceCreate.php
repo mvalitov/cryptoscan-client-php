@@ -22,6 +22,13 @@ class InvoiceCreate
     private $amount;
 
     /**
+     * Валюта
+     *
+     * @var string|null
+     */
+    private $currency;
+
+    /**
      * Номер платежа в системе
      *
      * @var string
@@ -79,6 +86,24 @@ class InvoiceCreate
             $this->metadata = EntityFactory::metadata($metadata);
         }
 
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param string|null $currency
+     * @return InvoiceCreate
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
         return $this;
     }
 }

@@ -21,6 +21,13 @@ class WidgetCreate
     private $amount;
 
     /**
+     * Валюта
+     *
+     * @var string|null
+     */
+    private $currency;
+
+    /**
      * Номер платежа в системе
      *
      * @var string
@@ -150,6 +157,24 @@ class WidgetCreate
     public function setLang($lang)
     {
         $this->lang = $lang;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param string|null $currency
+     * @return WidgetCreate
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
         return $this;
     }
 }

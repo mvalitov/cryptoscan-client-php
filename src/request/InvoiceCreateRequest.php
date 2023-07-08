@@ -57,6 +57,7 @@ class InvoiceCreateRequest implements HttpRequestInterface
                 $metadata->getValue() :
                 null,
             "client_reference_id" => $command->getClientReferenceId(),
+            "currency" => $command->getCurrency(),
         ];
     }
 }

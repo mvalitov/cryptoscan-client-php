@@ -45,7 +45,9 @@ $result = $client->invoiceCreate($command);
 
 // Добавление дополнительных данных
 $command = new InvoiceCreate(10, '123');
-$command->setMetadata('Example text');
+$command
+    ->setMetadata('Example text')
+    ->setCurrency("EUR");
 $result = $client->invoiceCreate($command);
 ```
 
@@ -64,7 +66,8 @@ $command
     ->setBackUrl('https://')
     ->setCancelUrl('https://')
     ->setWidgetDescription('Description')
-    ->setLang('ru-RU');
+    ->setLang('ru-RU')
+    ->setCurrency("EUR");
 $result = $client->widgetCreate($command);
 ```
 
@@ -97,16 +100,36 @@ https://cryptoscan.one/developer/index#user-info-view
 $result = $client->userDetail();
 ```
 
+### Список поддерживаемых валют
+
+https://cryptoscan.one/developer/index#supported-currency-rates
+
+```php
+...
+$result = $client->currencyRate();
+```
+
+### Проверка доступности валюты
+
+https://cryptoscan.one/developer/index#check-currency
+
+```php
+...
+$result = $client->currencyRateStatus('EUR');
+```
+
 Данные ответа
 -----
 
-| Модель                     | Экземпляр класса                   | 
-|----------------------------|------------------------------------|
-| Созданный инвойс  | InvoiceCreatedInterface |
+| Модель                          | Экземпляр класса                   | 
+|---------------------------------|------------------------------------|
+| Созданный инвойс                | InvoiceCreatedInterface |
 | Детальная информация по инвойсу | InvoiceDetailedInterface |
-| Список инвойсов       | InvoiceListInterface |
-| Информация по пользователю         | UserDetailInterface |
-| Созданный виджет          | WidgetCreatedInterface |
+| Список инвойсов                 | InvoiceListInterface |
+| Информация по пользователю      | UserDetailInterface |
+| Созданный виджет                | WidgetCreatedInterface |
+| Поддерживаемые валюты           | CurrencyRateListInterface |
+| Проверка доступности валюты     | CurrencyRateStatusInterface |
 
 Обработка ошибок
 -----
@@ -144,6 +167,7 @@ WebHook
 -----
 
 ### Обработка ответа платежа от сервера
+
 ```php
 // Заголовок переданного запроса
 $headers = [
@@ -166,6 +190,7 @@ $auth = AuthFactory::privateKey($publicKey, $privateKey);
 $webHookHandler = new WebHookHandler($auth);
 $message = $webHookHandler->handle($webHookData);
 ```
+
 ### Использование своего способа получения данных
 
 ```php
@@ -176,7 +201,6 @@ class MyWebHookData impliments WebHookDataInterface
 $webHookData = new MyWebHookData($headers, $data);
 ....
 ```
-
 
 ### Доступные типы сообщений
 

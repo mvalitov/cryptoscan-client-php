@@ -10,17 +10,23 @@ namespace cryptoscan\factory;
 
 use cryptoscan\command\InvoiceCreate;
 use cryptoscan\command\WidgetCreate;
+use cryptoscan\contract\CurrencyRateListInterface;
+use cryptoscan\contract\CurrencyRateStatusInterface;
 use cryptoscan\contract\InvoiceCreatedInterface;
 use cryptoscan\contract\InvoiceDetailedInterface;
 use cryptoscan\contract\InvoiceListInterface;
 use cryptoscan\contract\UserDetailInterface;
 use cryptoscan\contract\WidgetCreatedInterface;
+use cryptoscan\request\CurrencyRateListRequest;
+use cryptoscan\request\CurrencyRateStatusRequest;
 use cryptoscan\request\InvoiceCreateRequest;
 use cryptoscan\request\InvoiceDetailRequest;
 use cryptoscan\request\InvoiceSearchRequest;
 use cryptoscan\request\HttpRequestInterface;
 use cryptoscan\request\UserDetailRequest;
 use cryptoscan\request\WidgetCreateRequest;
+use cryptoscan\response\CurrencyRateListResponse;
+use cryptoscan\response\CurrencyRateStatusResponse;
 use cryptoscan\response\InvoiceCreatedResponse;
 use cryptoscan\response\InvoiceDetailedResponse;
 use cryptoscan\response\InvoiceListResponse;
@@ -150,6 +156,49 @@ class HttpMessageFactory
     public static function userDetailed(ResponseInterface $response)
     {
         return UserDetailedResponse::instanceByResponse($response);
+    }
+
+    /**
+     * Запрос на получение списка валют
+     *
+     * @return HttpRequestInterface
+     */
+    public static function currencyRate()
+    {
+        return new CurrencyRateListRequest();
+    }
+
+    /**
+     * Список валют
+     *
+     * @param ResponseInterface $response
+     * @return CurrencyRateListInterface
+     */
+    public static function currencyRateResult(ResponseInterface $response)
+    {
+        return CurrencyRateListResponse::instanceByResponse($response);
+    }
+
+    /**
+     * Запрос проверка доступности валюты
+     *
+     * @param string $currency
+     * @return HttpRequestInterface
+     */
+    public static function currencyRateStatus($currency)
+    {
+        return new CurrencyRateStatusRequest($currency);
+    }
+
+    /**
+     * Проверка доступности валюты
+     *
+     * @param ResponseInterface $response
+     * @return CurrencyRateStatusInterface
+     */
+    public static function currencyRateStatusResult(ResponseInterface $response)
+    {
+        return CurrencyRateStatusResponse::instanceByResponse($response);
     }
 
     /**
