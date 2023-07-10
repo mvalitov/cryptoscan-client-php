@@ -37,7 +37,7 @@ class CurrencyRateStatusRequest implements HttpRequestInterface
      */
     public function getUri()
     {
-        return "currency-rate/status?currency={$this->currency}";
+        return "currency-rate/{$this->currency}/status";
     }
 
     /**
