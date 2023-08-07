@@ -11,7 +11,7 @@ CryptoScan
 ------------
 Устанавливать рекомендуется через composer выполнив:
 
-    composer require cryptoscan-one/cryptoscan-client-php "~1.0.0"
+    composer require cryptoscan-one/cryptoscan-client-php "~1.1.0"
 
 Использование
 -----
