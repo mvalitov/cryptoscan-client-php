@@ -38,6 +38,20 @@ interface InvoiceDetailedInterface
     public function getTransactionId();
 
     /**
+     * Валюта, указанная пользователя
+     *
+     * @return string|null
+     */
+    public function getSourceCurrency();
+
+    /**
+     * Сумма в валюте пользователя
+     *
+     * @return float|null
+     */
+    public function getSourceAmount();
+
+    /**
      * Итоговая сумма к оплате
      *
      * @return float

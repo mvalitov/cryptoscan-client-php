@@ -32,6 +32,16 @@ class WebHookPaidMessage extends WebHookMessage
     protected $paidAt;
 
     /**
+     * @var string|null
+     */
+    protected $sourceCurrency;
+
+    /**
+     * @var float|null
+     */
+    protected $sourceAmount;
+
+    /**
      * @return string
      */
     public function getPayerWallet()
@@ -53,5 +63,21 @@ class WebHookPaidMessage extends WebHookMessage
     public function getPaidAt()
     {
         return $this->paidAt;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSourceCurrency()
+    {
+        return $this->sourceCurrency;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getSourceAmount()
+    {
+        return $this->sourceAmount;
     }
 }

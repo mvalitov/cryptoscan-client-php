@@ -70,7 +70,17 @@ class InvoiceDetailedResponse extends BaseResponse implements InvoiceDetailedInt
     /**
      * @var int
      */
-    public $expireAt;
+    protected $expireAt;
+
+    /**
+     * @var string|null
+     */
+    protected $sourceCurrency;
+
+    /**
+     * @var float|null
+     */
+    protected $sourceAmount;
 
     /**
      * @inheritDoc
@@ -166,5 +176,21 @@ class InvoiceDetailedResponse extends BaseResponse implements InvoiceDetailedInt
     public function getFinalAmount()
     {
         return $this->finalAmount;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSourceCurrency()
+    {
+        return $this->sourceCurrency;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSourceAmount()
+    {
+        return $this->sourceAmount;
     }
 }

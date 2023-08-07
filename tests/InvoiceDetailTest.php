@@ -38,6 +38,8 @@ class InvoiceDetailTest extends TestCase
                 "wallet": "TsdfsdfFDSGFHFGDGBFDGFG",
                 "payer_wallet": "ThfghfghKNJLNJK",
                 "transaction_id": null,
+                "source_currency": "EUR",
+                "source_amount": 10.2,
                 "final_amount": 10.54,
                 "requested_amount": "10.53",
                 "status": "completed",
@@ -75,5 +77,7 @@ class InvoiceDetailTest extends TestCase
         $this->assertEquals('1678991717', $response->getCreatedAt());
         $this->assertNull($response->getPaidAt());
         $this->assertEquals('1678993517', $response->getExpireAt());
+        $this->assertEquals('EUR', $response->getSourceCurrency());
+        $this->assertEquals('10.2', $response->getSourceAmount());
     }
 }
